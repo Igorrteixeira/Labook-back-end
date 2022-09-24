@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-
+# @name login
 POST  https://labook-back-end.herokuapp.com/user/login
 Content-Type: application/json
 
@@ -22,7 +22,7 @@ Content-Type: application/json
 ### POST -------------------------------------------------
 // create
 POST  https://labook-back-end.herokuapp.com/post/create
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGI3MzE2LWJjODYtNDYzYi04MmQ4LThmZjk4MTU5YTU4YiIsImlhdCI6MTY2Mzg3MTEzNywiZXhwIjoxNjYzOTU3NTM3fQ.uHvUjcL42_UiLHW6xuoKEXHCz7lb9ocj8dOvEZ5HTJw
+Authorization: {{login.response.body.Token}}
 Content-Type: application/json
 
 {
@@ -32,18 +32,17 @@ Content-Type: application/json
 ###
 //get post by id
 GET  https://labook-back-end.herokuapp.com/post/f5e32ce6-4824-4c5f-9077-760bad836517
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2YzZmNzE5LWU3OWYtNDU0NC04ZWJkLThhMzJjNTg2YzFlMiIsInJvbGVzIjoiTk9STUFMIiwiaWF0IjoxNjYzODU0MDMwLCJleHAiOjE2NjM5NDA0MzB9.QZSxDol-QlqcuKZuR_fbXNe1tS8PvzGS6VCDdIb4Hrw
+Authorization: {{login.response.body.Token}}
 
 ###
 
 GET  https://labook-back-end.herokuapp.com/post/feed
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2YzZmNzE5LWU3OWYtNDU0NC04ZWJkLThhMzJjNTg2YzFlMiIsInJvbGVzIjoiTk9STUFMIiwiaWF0IjoxNjYzODU0MDMwLCJleHAiOjE2NjM5NDA0MzB9.QZSxDol-QlqcuKZuR_fbXNe1tS8PvzGS6VCDdIb4Hrw
-
+Authorization: {{login.response.body.Token}}
 ###
 
 
 DELETE   https://labook-back-end.herokuapp.com/post/delete/8c4c0f0f-a09e-4001-ae7d-e5599a26f2c0
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJlM2Q1MWI0LTNkZGUtNGRjMi1iMTU3LTNjNjJjOThjZjc0MCIsInJvbGVzIjoiQURJTUlOIiwiaWF0IjoxNjYzODY2MzMyLCJleHAiOjE2NjM5NTI3MzJ9.i62QRr51dbry0tpZZg7B1HkfHOj5O21jf-lQv0mpSm4
+Authorization: {{login.response.body.Token}}
 
 ### Likes -----------------------------------------------------------
 POST    https://labook-back-end.herokuapp.com/posts/like
@@ -51,12 +50,12 @@ Content-Type: application/json
 
 {
    "id":"054e7163-881d-4765-ae49-9d2f2f60aa5a",
-   "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2YzZmNzE5LWU3OWYtNDU0NC04ZWJkLThhMzJjNTg2YzFlMiIsInJvbGVzIjoiTk9STUFMIiwiaWF0IjoxNjYzODU0MDMwLCJleHAiOjE2NjM5NDA0MzB9.QZSxDol-QlqcuKZuR_fbXNe1tS8PvzGS6VCDdIb4Hrw"
+   "token":"{{login.response.body.Token}}"
 }
 
 ###
 DELETE  https://labook-back-end.herokuapp.com/posts/dislike/054e7163-881d-4765-ae49-9d2f2f60aa5a
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2YzZmNzE5LWU3OWYtNDU0NC04ZWJkLThhMzJjNTg2YzFlMiIsInJvbGVzIjoiTk9STUFMIiwiaWF0IjoxNjYzODU0MDMwLCJleHAiOjE2NjM5NDA0MzB9.QZSxDol-QlqcuKZuR_fbXNe1tS8PvzGS6VCDdIb4Hrw
+Authorization: Authorization: {{login.response.body.Token}}
 
 
 
@@ -66,11 +65,11 @@ POST   https://labook-back-end.herokuapp.com/friends/done
 Content-Type: application/json
 
 {
-   "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyOWQyYzJlLTc3ZGUtNGQ2OS05OWYzLTc2YjBiZWFlM2Q3MSIsImlhdCI6MTY2Mzg1NjE4MCwiZXhwIjoxNjYzOTQyNTgwfQ.32pRIaO7-jmaQx4_9i-Hy5bvOCmcmLUweKUlCTN315c",
+   "token":"{{login.response.body.Token}}",
    "id":"614b7316-bc86-463b-82d8-8ff98159a58b"
 }
 
 ### 
 // deleta amizade
 DELETE    https://labook-back-end.herokuapp.com/friends/undone/614b7316-bc86-463b-82d8-8ff98159a58b
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgyOWQyYzJlLTc3ZGUtNGQ2OS05OWYzLTc2YjBiZWFlM2Q3MSIsImlhdCI6MTY2Mzg1NjE4MCwiZXhwIjoxNjYzOTQyNTgwfQ.32pRIaO7-jmaQx4_9i-Hy5bvOCmcmLUweKUlCTN315c
+Authorization: {{login.response.body.Token}}
